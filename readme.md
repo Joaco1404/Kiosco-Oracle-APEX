@@ -21,7 +21,7 @@ Sistema de Punto de Venta (POS) y Gestión de Inventario completo para un kiosco
 ## 📸 Capturas del Sistema
 
 ### Panel de Control
-![Panel de Control](imagenes/panel.PNG)
+![Panel de Control](https://github.com/Joaco1404/Kiosco-Oracle-APEX/blob/main/imagenes/panel.png?raw=true)
 
 ### Punto de Venta (Ventas)
 ![Nueva Venta](imagenes/ventas.PNG)
