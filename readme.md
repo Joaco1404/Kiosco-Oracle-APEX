@@ -21,19 +21,19 @@ Sistema de Punto de Venta (POS) y Gestión de Inventario completo para un kiosco
 ## 📸 Capturas del Sistema
 
 ### Panel de Control
-![Panel de Control](Imagenes/panel.png)
+![Panel de Control](imagenes/panel.PNG)
 
 ### Punto de Venta (Ventas)
-![Nueva Venta](Imagenes/ventas.png)
+![Nueva Venta](imagenes/ventas.PNG)
 
 ### Gestión de Caja
-![Movimientos de Caja](Imagenes/caja.png)
+![Movimientos de Caja](imagenes/caja.PNG)
 
 ### Cierre de Caja Exitoso
-![Cierre de Caja](Imagenes/cierre.png)
+![Cierre de Caja](imagenes/cierre.PNG)
 
 ### Gestión de Productos
-![Productos](Imagenes/productos.png)
+![Productos](imagenes/productos.PNG)
 
 ### Reportes y KPIs
-![Reportes](Imagenes/reportes.png)
+![Reportes](imagenes/reportes.PNG)
