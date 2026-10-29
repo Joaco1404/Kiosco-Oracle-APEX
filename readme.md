@@ -24,16 +24,16 @@ Sistema de Punto de Venta (POS) y Gestión de Inventario completo para un kiosco
 ![Panel de Control](https://github.com/Joaco1404/Kiosco-Oracle-APEX/blob/main/imagenes/panel.png?raw=true)
 
 ### Punto de Venta (Ventas)
-![Nueva Venta](imagenes/ventas.PNG)
+![Nueva Venta](https://github.com/Joaco1404/Kiosco-Oracle-APEX/blob/main/imagenes/ventas.png?raw=true)
 
 ### Gestión de Caja
-![Movimientos de Caja](imagenes/caja.PNG)
+![Movimientos de Caja](https://github.com/Joaco1404/Kiosco-Oracle-APEX/blob/main/imagenes/caja.png?raw=true)
 
 ### Cierre de Caja Exitoso
-![Cierre de Caja](imagenes/cierre.PNG)
+![Cierre de Caja](https://github.com/Joaco1404/Kiosco-Oracle-APEX/blob/main/imagenes/cierre.png?raw=true)
 
 ### Gestión de Productos
-![Productos](imagenes/productos.PNG)
+![Productos](https://github.com/Joaco1404/Kiosco-Oracle-APEX/blob/main/imagenes/productos.png?raw=true)
 
 ### Reportes y KPIs
-![Reportes](imagenes/reportes.PNG)
+![Reportes](https://github.com/Joaco1404/Kiosco-Oracle-APEX/blob/main/imagenes/reportes.png?raw=true)
