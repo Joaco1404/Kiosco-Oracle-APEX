@@ -1,24 +1,39 @@
-Kiosco POS System
-Sistema de Punto de Venta y Gestión de Inventario para un kiosco real, desarrollado con Oracle APEX.
+# 📦 Kiosco POS System
 
-Características
-Carrito de compras con validación de stock en tiempo real.
+Sistema de Punto de Venta (POS) y Gestión de Inventario completo para un kiosco real, desarrollado como proyecto personal con Oracle APEX.
 
-Control de apertura, movimientos y cierre de caja.
+## 🚀 Características
 
-Gestión de productos y proveedores.
+*   **Control de Inventario:** Validación de stock en tiempo real (evita vender sin stock).
+*   **Carrito de Compras:** Uso de Colecciones APEX para agregar productos dinámicamente.
+*   **Gestión de Caja:** Apertura, registro de movimientos (retiros/gastos) y cierre con arqueo de efectivo.
+*   **Seguridad:** Control de acceso basado en roles (Administrador vs. Vendedor).
+*   **Reportes:** Dashboards con KPIs y gráficos dinámicos de ventas.
+*   **PWA:** Instalable como aplicación de escritorio (Progressive Web App).
 
-Reportes dinámicos y gráficos interactivos.
+## 🛠️ Tecnologías Utilizadas
 
-Seguridad basada en roles.
+*   **Backend / Base de Datos:** Oracle Database, SQL, PL/SQL (Triggers, Vistas).
+*   **Framework:** Oracle APEX.
+*   **Frontend:** JavaScript, HTML5, CSS3 (Personalización de interfaces y responsividad).
+*   **Otros:** JSON, Progressive Web Apps (PWA).
 
-Instalable como PWA (Progressive Web App).
+## 📸 Capturas del Sistema
 
-Tecnologías
-Oracle APEX
+### Panel de Control
+![Panel de Control](imagenes/panel.PNG)
 
-Oracle Database / PL/SQL
+### Punto de Venta (Ventas)
+![Nueva Venta](imagenes/ventas.PNG)
 
-JavaScript / CSS
+### Gestión de Caja
+![Movimientos de Caja](imagenes/caja.PNG)
 
-PWA
+### Cierre de Caja Exitoso
+![Cierre de Caja](imagenes/cierre.PNG)
+
+### Gestión de Productos
+![Productos](imagenes/productos.PNG)
+
+### Reportes y KPIs
+![Reportes](imagenes/reportes.PNG)
