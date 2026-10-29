@@ -11,6 +11,15 @@ Sistema de Punto de Venta (POS) y Gestión de Inventario completo para un kiosco
 *   **Reportes:** Dashboards con KPIs y gráficos dinámicos de ventas.
 *   **PWA:** Instalable como aplicación de escritorio (Progressive Web App).
 
+## ⚙️ Implementación Técnica en Oracle APEX
+
+*   **Acciones Dinámicas (DA):** Implementación de interactividad sin recargar la página (AJAX) para el carrito de compras, actualización de totales y notificaciones de error/éxito en tiempo real.
+*   **Procesos PL/SQL:** Desarrollo de la lógica transaccional en el servidor para el registro de ventas, descuento de stock y cálculo de arqueo de caja.
+*   **Validaciones:** Reglas de negocio en el servidor para evitar ventas sin stock, duplicidad de CUIT en proveedores y validación de formatos de Email.
+*   **Ramificaciones (Branches):** Control de flujo de navegación, como el bloqueo de la página de ventas si la caja está cerrada o la redirección segura tras cambiar la contraseña.
+*   **Colecciones de APEX (APEX Collections):** Uso de memoria temporal en el servidor para gestionar el carrito de compras antes de confirmar la venta.
+*   **Componentes Nativos y UI:** Personalización avanzada de Interactive Grids, Interactive Reports y Chart (JET) mediante CSS y JavaScript.
+
 ## 🛠️ Tecnologías Utilizadas
 
 *   **Backend / Base de Datos:** Oracle Database, SQL, PL/SQL (Triggers, Vistas).
