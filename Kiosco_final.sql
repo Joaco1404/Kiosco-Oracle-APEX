@@ -19,7 +19,7 @@ whenever sqlerror exit sql.sqlcode rollback
 begin
 wwv_flow_imp.import_begin (
  p_version_yyyy_mm_dd=>'2026.04.07'
-,p_release=>'26.2.0'
+,p_release=>'26.2.1'
 ,p_default_workspace_id=>9582086950507493855
 ,p_default_application_id=>150510
 ,p_default_id_offset=>0
@@ -33,12 +33,12 @@ prompt APPLICATION 150510 - Kiosco
 -- Application Export:
 --   Application:     150510
 --   Name:            Kiosco
---   Date and Time:   23:35 Tuesday October 27, 2026
+--   Date and Time:   15:07 Monday November 2, 2026
 --   Exported By:     DESDEABAJOOTRAVEZ2@GMAIL.COM
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                     14
---       Items:                   42
+--       Items:                   43
 --       Validations:              4
 --       Processes:               19
 --       Regions:                 79
@@ -63,7 +63,7 @@ prompt APPLICATION 150510 - Kiosco
 --       Reports:
 --       E-Mail:
 --     Supporting Objects:  Included
---   Version:         26.2.0
+--   Version:         26.2.1
 --   Instance ID:     63113759365424
 --
 
@@ -96,7 +96,7 @@ wwv_imp_workspace.create_flow(
 ,p_application_tab_set=>0
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'Kiosco - DD.MM.YYYY'
+,p_flow_version=>'Kiosco 2026'
 ,p_flow_status=>'AVAILABLE'
 ,p_browser_cache=>'N'
 ,p_browser_frame=>'D'
@@ -107,12 +107,12 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'Kiosco'
 ,p_created_on=>wwv_flow_imp.dz('20260622222059Z')
-,p_last_updated_on=>wwv_flow_imp.dz('20261027233247Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20261031012120Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_last_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_file_prefix=>nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>2461332010403
-,p_version_scn=>'15850249977872'
+,p_version_scn=>'15851476215259'
 ,p_print_server_type=>'INSTANCE'
 ,p_file_storage=>'DB'
 ,p_is_pwa=>'Y'
@@ -1460,10 +1460,11 @@ wwv_flow_imp_page.create_page(
 ,p_autocomplete_on_off=>'OFF'
 ,p_step_template=>4075783602716660119
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'13'
 ,p_created_on=>wwv_flow_imp.dz('20260622222059Z')
-,p_last_updated_on=>wwv_flow_imp.dz('20261015205210Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20261030192545Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_last_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -1556,7 +1557,8 @@ wwv_flow_imp_page.create_report_region(
 'from compras c',
 'join proveedores p on p.proveedor_id = c.proveedor_id',
 'where upper(c.estado) = ''PENDIENTE''',
-'group by p.nombre'))
+'group by p.nombre',
+'order by p.nombre'))
 ,p_display_when_condition=>'select 1 from compras where upper(estado) = ''PENDIENTE'' and rownum = 1'
 ,p_display_condition_type=>'EXISTS'
 ,p_ajax_enabled=>'Y'
@@ -1571,7 +1573,7 @@ wwv_flow_imp_page.create_report_region(
 ,p_sort_null=>'L'
 ,p_plug_query_strip_html=>'N'
 ,p_created_on=>wwv_flow_imp.dz('20261012002501Z')
-,p_updated_on=>wwv_flow_imp.dz('20261012192702Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030192518Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -1582,11 +1584,10 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_display_sequence=>20
 ,p_column_heading=>'Pendientes'
 ,p_column_alignment=>'CENTER'
-,p_disable_sort_column=>'N'
 ,p_report_column_width=>100
 ,p_derived_column=>'N'
 ,p_include_in_export=>'Y'
-,p_updated_on=>wwv_flow_imp.dz('20261012192702Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030190922Z')
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
 wwv_flow_imp_page.create_report_columns(
@@ -1595,12 +1596,12 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'PROVEEDOR'
 ,p_column_display_sequence=>10
 ,p_column_heading=>'Proveedor'
+,p_use_as_row_header=>'Y'
 ,p_heading_alignment=>'LEFT'
-,p_disable_sort_column=>'N'
 ,p_report_column_width=>250
 ,p_derived_column=>'N'
 ,p_include_in_export=>'Y'
-,p_updated_on=>wwv_flow_imp.dz('20261012192702Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030192518Z')
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
 wwv_flow_imp_page.create_report_columns(
@@ -1612,11 +1613,10 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_format=>'FML999G999G999G999G990D00'
 ,p_column_alignment=>'RIGHT'
 ,p_heading_alignment=>'RIGHT'
-,p_disable_sort_column=>'N'
 ,p_report_column_width=>150
 ,p_derived_column=>'N'
 ,p_include_in_export=>'Y'
-,p_updated_on=>wwv_flow_imp.dz('20261012192702Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030190922Z')
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
 wwv_flow_imp_page.create_page_plug(
@@ -1924,7 +1924,7 @@ unistr('         ''\2014 Sin proveedor \2014'''),
 ,p_sort_null=>'L'
 ,p_plug_query_strip_html=>'N'
 ,p_created_on=>wwv_flow_imp.dz('20260922200141Z')
-,p_updated_on=>wwv_flow_imp.dz('20261008202654Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030192545Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -1957,10 +1957,11 @@ wwv_flow_imp_page.create_report_columns(
 ,p_column_alias=>'NOMBRE'
 ,p_column_display_sequence=>10
 ,p_column_heading=>'Nombre'
+,p_use_as_row_header=>'Y'
 ,p_heading_alignment=>'LEFT'
 ,p_derived_column=>'N'
 ,p_include_in_export=>'Y'
-,p_updated_on=>wwv_flow_imp.dz('20260922200141Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030192545Z')
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
 wwv_flow_imp_page.create_report_columns(
@@ -2004,33 +2005,6 @@ wwv_flow_imp_page.create_page_item(
   'value_protected', 'Y')).to_clob
 ,p_created_on=>wwv_flow_imp.dz('20260930184325Z')
 ,p_updated_on=>wwv_flow_imp.dz('20260930184325Z')
-,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
-,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
-);
-wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(42625266614620567530)
-,p_name=>'New'
-,p_static_id=>'new'
-,p_event_sequence=>10
-,p_bind_type=>'bind'
-,p_execution_type=>'IMMEDIATE'
-,p_bind_event_type=>'ready'
-,p_created_on=>wwv_flow_imp.dz('20261002191800Z')
-,p_updated_on=>wwv_flow_imp.dz('20261002191800Z')
-,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
-,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(42625266794764567531)
-,p_event_id=>wwv_flow_imp.id(42625266614620567530)
-,p_event_result=>'TRUE'
-,p_action_sequence=>10
-,p_static_id=>'native-show'
-,p_action=>'NATIVE_SHOW'
-,p_affected_elements_type=>'JAVASCRIPT_EXPRESSION'
-,p_affected_elements=>'console.log(''ESO ESTA MAAAALL'');'
-,p_created_on=>wwv_flow_imp.dz('20261002191800Z')
-,p_updated_on=>wwv_flow_imp.dz('20261002191800Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -2675,7 +2649,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'21'
 ,p_created_on=>wwv_flow_imp.dz('20261008005252Z')
-,p_last_updated_on=>wwv_flow_imp.dz('20261021204559Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20261030203114Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_last_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -2739,7 +2713,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_prn_page_footer_alignment=>'CENTER'
 ,p_prn_border_color=>'#666666'
 ,p_created_on=>wwv_flow_imp.dz('20261008005330Z')
-,p_updated_on=>wwv_flow_imp.dz('20261021204559Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030203114Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -2995,14 +2969,14 @@ wwv_flow_imp_page.create_region_column(
 ,p_filter_text_case=>'MIXED'
 ,p_filter_exact_match=>true
 ,p_filter_lov_type=>'DISTINCT'
-,p_use_as_row_header=>false
+,p_use_as_row_header=>true
 ,p_enable_sort_group=>true
 ,p_enable_control_break=>true
 ,p_enable_hide=>true
 ,p_is_primary_key=>false
 ,p_duplicate_value=>true
 ,p_include_in_export=>true
-,p_updated_on=>wwv_flow_imp.dz('20261008144903Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030203114Z')
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
 wwv_flow_imp_page.create_region_column(
@@ -3356,7 +3330,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'21'
 ,p_created_on=>wwv_flow_imp.dz('20260624151620Z')
-,p_last_updated_on=>wwv_flow_imp.dz('20261023211949Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20261030222515Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_last_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -4023,14 +3997,18 @@ wwv_flow_imp_page.create_page_process(
 '      end if;',
 '     end loop;',
 '',
-'     if length(v_no_eliminados) > 0 then',
-unistr('        v_mensaje := ''\26A0\FE0F Eliminados: '' || v_eliminados || ''. No se pudieron eliminar (tienen ventas asociadas): '' || rtrim(v_no_eliminados, '', '');'),
-'     else',
-unistr('        v_mensaje := ''\2705 '' || v_eliminados || '' productos(s) eliminado(s) correctamente.'';'),
-'     end if;',
-'',
-'     HTP.P(''{"success":"OK", "message":"'' || APEX_ESCAPE.JSON(v_mensaje) || ''"}'');',
-'',
+'          IF length(v_no_eliminados) > 0 THEN',
+unistr('        -- Si no se elimin\00F3 ninguno porque todos ten\00EDan ventas, mandamos ERROR (cartel rojo)'),
+'        IF v_eliminados = 0 THEN',
+unistr('            HTP.P(''{"success":"ERROR", "message":"'' || APEX_ESCAPE.JSON(''\26A0\FE0F No se pudieron eliminar (tienen ventas asociadas): '' || rtrim(v_no_eliminados, '', '')) || ''"}'');'),
+'        ELSE',
+'            -- Si se eliminaron algunos pero otros no, mandamos ADVERTENCIA (cartel rojo/amarillo)',
+unistr('            HTP.P(''{"success":"ERROR", "message":"'' || APEX_ESCAPE.JSON(''\26A0\FE0F Eliminados: '' || v_eliminados || ''. No se pudieron eliminar: '' || rtrim(v_no_eliminados, '', '')) || ''"}'');'),
+'        END IF;',
+'     ELSE',
+unistr('        -- Todo sali\00F3 bien (cartel verde)'),
+unistr('        HTP.P(''{"success":"OK", "message":"'' || APEX_ESCAPE.JSON(''\2705 '' || v_eliminados || '' productos(s) eliminado(s) correctamente.'') || ''"}'');'),
+'     END IF;',
 'exception',
 '    when others then',
 unistr('        HTP.P(''{"success":"ERROR", "message":"'' || APEX_ESCAPE.JSON(''\274C Error: '' || SQLERRM) || ''"}'');'),
@@ -4038,7 +4016,7 @@ unistr('        HTP.P(''{"success":"ERROR", "message":"'' || APEX_ESCAPE.JSON(''
 ,p_process_clob_language=>'PLSQL'
 ,p_internal_uid=>29066344845497759835
 ,p_created_on=>wwv_flow_imp.dz('20260916195045Z')
-,p_updated_on=>wwv_flow_imp.dz('20260916205154Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030222515Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -4078,6 +4056,17 @@ unistr('      v_mensaje := ''\274C El nombre del producto no puede estar vac\00E
 '      GOTO salida;',
 '    END IF;',
 '',
+unistr('    -- NUEVA VALIDACI\00D3N: Precio y Stock obligatorios'),
+'    IF rec.precio IS NULL OR rec.stock IS NULL THEN',
+'      v_estado := ''ERROR'';',
+unistr('      v_mensaje := ''\274C El precio y el stock son obligatorios.'';'),
+'      GOTO salida;',
+'    ELSIF rec.precio < 0 OR rec.stock < 0 THEN',
+'      v_estado := ''ERROR'';',
+unistr('      v_mensaje := ''\274C El precio y el stock no pueden ser negativos.'';'),
+'      GOTO salida;',
+'    END IF;',
+'    ',
 '    -- Validar duplicado (excepto si es el mismo producto)',
 '    SELECT COUNT(*)',
 '      INTO v_count',
@@ -4116,7 +4105,7 @@ unistr('    HTP.P(''{"success":"ERROR", "message":"'' || APEX_ESCAPE.JSON(''\274
 ,p_process_clob_language=>'PLSQL'
 ,p_internal_uid=>29066342880466759815
 ,p_created_on=>wwv_flow_imp.dz('20260831204637Z')
-,p_updated_on=>wwv_flow_imp.dz('20260910185232Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030222514Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -4132,10 +4121,11 @@ wwv_flow_imp_page.create_page(
 ,p_autocomplete_on_off=>'OFF'
 ,p_step_template=>4075783602716660119
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'18'
 ,p_created_on=>wwv_flow_imp.dz('20260730231011Z')
-,p_last_updated_on=>wwv_flow_imp.dz('20261019155923Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20261030202118Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_last_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -4758,7 +4748,7 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_execution_type=>'IMMEDIATE'
 ,p_bind_event_type=>'click'
 ,p_created_on=>wwv_flow_imp.dz('20260731205152Z')
-,p_updated_on=>wwv_flow_imp.dz('20261019155923Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030200233Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -4860,7 +4850,7 @@ wwv_flow_imp_page.create_page_da_action(
   'suppress_change_event', 'N')).to_clob
 ,p_wait_for_result=>'Y'
 ,p_created_on=>wwv_flow_imp.dz('20260731205152Z')
-,p_updated_on=>wwv_flow_imp.dz('20261019150324Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030200233Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -4897,7 +4887,7 @@ wwv_flow_imp_page.create_page_da_action(
     '    }',
     '}, 100);')))).to_clob
 ,p_created_on=>wwv_flow_imp.dz('20261019150324Z')
-,p_updated_on=>wwv_flow_imp.dz('20261019155923Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030200233Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -5008,7 +4998,7 @@ unistr('    APEX_APPLICATION.G_PRINT_SUCCESS_MESSAGE := ''\274C Error: '' || SQL
 ,p_process_when_button_id=>wwv_flow_imp.id(22166503720644826441)
 ,p_internal_uid=>22188222226312191126
 ,p_created_on=>wwv_flow_imp.dz('20260813204640Z')
-,p_updated_on=>wwv_flow_imp.dz('20261009195422Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030200233Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -5042,10 +5032,11 @@ wwv_flow_imp_page.create_page(
 ,p_autocomplete_on_off=>'OFF'
 ,p_step_template=>4075783602716660119
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'04'
 ,p_created_on=>wwv_flow_imp.dz('20260814135750Z')
-,p_last_updated_on=>wwv_flow_imp.dz('20261020202006Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20261030202150Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_last_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -6277,10 +6268,11 @@ wwv_flow_imp_page.create_page(
 ,p_autocomplete_on_off=>'OFF'
 ,p_step_template=>4075783602716660119
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'23'
 ,p_created_on=>wwv_flow_imp.dz('20260929144420Z')
-,p_last_updated_on=>wwv_flow_imp.dz('20261020135456Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20261031012120Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_last_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -6485,7 +6477,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_prn_border_color=>'#666666'
 ,p_ai_enabled=>false
 ,p_created_on=>wwv_flow_imp.dz('20260929182303Z')
-,p_updated_on=>wwv_flow_imp.dz('20260929191311Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030201646Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -6501,7 +6493,7 @@ wwv_flow_imp_page.create_worksheet(
 ,p_enable_mail_download=>'Y'
 ,p_internal_uid=>41212212412738592649
 ,p_created_on=>wwv_flow_imp.dz('20260929182303Z')
-,p_updated_on=>wwv_flow_imp.dz('20260929191311Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030201646Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -6514,10 +6506,10 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_column_type=>'NUMBER'
 ,p_heading_alignment=>'RIGHT'
 ,p_column_alignment=>'RIGHT'
-,p_use_as_row_header=>'N'
+,p_use_as_row_header=>'Y'
 ,p_available_clientside=>'N'
 ,p_created_on=>wwv_flow_imp.dz('20260929182303Z')
-,p_updated_on=>wwv_flow_imp.dz('20260929182303Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030201646Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -6693,7 +6685,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_prn_border_color=>'#666666'
 ,p_ai_enabled=>false
 ,p_created_on=>wwv_flow_imp.dz('20260929182303Z')
-,p_updated_on=>wwv_flow_imp.dz('20260929194631Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030201646Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -6709,7 +6701,7 @@ wwv_flow_imp_page.create_worksheet(
 ,p_enable_mail_download=>'Y'
 ,p_internal_uid=>41212212186487592646
 ,p_created_on=>wwv_flow_imp.dz('20260929182303Z')
-,p_updated_on=>wwv_flow_imp.dz('20260929194631Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030201646Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -6783,10 +6775,10 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_column_type=>'NUMBER'
 ,p_heading_alignment=>'RIGHT'
 ,p_column_alignment=>'RIGHT'
-,p_use_as_row_header=>'N'
+,p_use_as_row_header=>'Y'
 ,p_available_clientside=>'N'
 ,p_created_on=>wwv_flow_imp.dz('20260929182303Z')
-,p_updated_on=>wwv_flow_imp.dz('20260929182303Z')
+,p_updated_on=>wwv_flow_imp.dz('20261030201646Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -6983,6 +6975,20 @@ wwv_flow_imp_page.create_page_item(
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(2707658563092991948)
+,p_name=>'P10_MENSAJE_CIERRE'
+,p_item_sequence=>100
+,p_source_type=>'ALWAYS_NULL'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'value_protected', 'N')).to_clob
+,p_created_on=>wwv_flow_imp.dz('20261031003128Z')
+,p_updated_on=>wwv_flow_imp.dz('20261031012120Z')
+,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
+,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(41212210599476592630)
 ,p_name=>'P10_MONTO_INICIAL'
 ,p_item_sequence=>30
@@ -7097,6 +7103,48 @@ wwv_flow_imp_page.create_page_item(
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(2707658683489991949)
+,p_name=>'New'
+,p_static_id=>'new'
+,p_event_sequence=>10
+,p_bind_type=>'bind'
+,p_bind_event_type=>'ready'
+,p_created_on=>wwv_flow_imp.dz('20261031003128Z')
+,p_updated_on=>wwv_flow_imp.dz('20261031012120Z')
+,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
+,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(2707658786253991950)
+,p_event_id=>wwv_flow_imp.id(2707658683489991949)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_static_id=>'native-javascript-code'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'js_code', wwv_flow_string.join(wwv_flow_t_varchar2(
+    'setTimeout(function() {',
+    '    var msg = apex.item(''P10_MENSAJE_CIERRE'').getValue();',
+    '    ',
+    '    if (msg && msg.trim() !== '''') {',
+    '        apex.message.clearErrors();',
+    '        apex.message.showErrors([{',
+    '            type: "warning",',
+    '            location: ["page"],',
+    '            message: msg,',
+    '            unsafe: false',
+    '        }]);',
+    '        ',
+    unistr('        // Limpiamos el \00EDtem'),
+    '        apex.item(''P10_MENSAJE_CIERRE'').setValue('''');',
+    '    }',
+    '}, 200);')))).to_clob
+,p_created_on=>wwv_flow_imp.dz('20261031003128Z')
+,p_updated_on=>wwv_flow_imp.dz('20261031012120Z')
+,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
+,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
+);
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(42625265575493567519)
 ,p_process_sequence=>10
@@ -7108,34 +7156,52 @@ wwv_flow_imp_page.create_page_process(
 'declare',
 '    v_existe number;',
 'begin',
+'    -- 1. LIMPIAR MENSAJES ANTERIORES (Fundamental para que no queden pegados)',
+'    apex_util.set_session_state(''P10_MENSAJE_CIERRE'', NULL);',
+'    apex_util.set_session_state(''P10_MENSAJE_BLOQUEO'', NULL);',
+'',
+'    -- 2. Verificar que no haya caja abierta',
 '    select count(*) into v_existe',
 '    from cierres_caja',
 '    where estado = ''ABIERTO'';',
 '',
 '    if v_existe > 0 then',
-unistr('        apex_application.g_print_success_message := ''\26A0\FE0F Ya hay una caja abierta. Cerrala antes de abrir otra.'';'),
+'        apex_error.add_error(',
+unistr('            p_message => ''\26A0\FE0F Ya hay una caja abierta. Cerrala antes de abrir otra.'','),
+'            p_display_location => apex_error.c_inline_in_notification',
+'        );',
 '        return;',
 '    end if;',
 '',
+'    -- 3. Validar monto inicial',
 '    if :P10_MONTO_INICIAL is null or :P10_MONTO_INICIAL < 0 then',
-unistr('        apex_application.g_print_success_message := ''\26A0\FE0F Ingres\00E1 un monto inicial v\00E1lido.'';'),
+'        apex_error.add_error(',
+unistr('            p_message => ''\26A0\FE0F Ingres\00E1 un monto inicial v\00E1lido.'','),
+'            p_display_location => apex_error.c_inline_with_field_and_notif,',
+'            p_page_item_name => ''P10_MONTO_INICIAL''',
+'        );',
 '        return;',
 '    end if;',
 '',
-unistr('    -- Aqu\00ED usamos :APP_USER directamente, adi\00F3s al ''sucutrule'''),
+'    -- 4. Insertar nueva caja',
 '    insert into cierres_caja (',
 '        fecha_apertura, turno, usuario, monto_inicial, estado',
 '    ) values (',
 '        sysdate, nvl(:P10_TURNO, ''INICIO''), :APP_USER, nvl(:P10_MONTO_INICIAL, 0), ''ABIERTO''',
 '    );',
 '',
+'    -- 5. Limpiar campos del formulario',
 '    :P10_MONTO_INICIAL := null;',
 '    :P10_TURNO := ''UNICO'';',
 '',
+unistr('    -- 6. Mensaje de \00E9xito'),
 unistr('    apex_application.g_print_success_message := ''\2705 Caja abierta correctamente.'';'),
 'exception',
 '    when others then',
-unistr('        apex_application.g_print_success_message := ''\274C Error: '' || SQLERRM;'),
+'        apex_error.add_error(',
+unistr('            p_message => ''\274C Error: '' || SQLERRM,'),
+'            p_display_location => apex_error.c_inline_in_notification',
+'        );',
 'end;'))
 ,p_process_clob_language=>'PLSQL'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
@@ -7143,7 +7209,7 @@ unistr('        apex_application.g_print_success_message := ''\274C Error: '' ||
 ,p_process_when_type=>'REQUEST_EQUALS_CONDITION'
 ,p_internal_uid=>42625265575493567519
 ,p_created_on=>wwv_flow_imp.dz('20260929191301Z')
-,p_updated_on=>wwv_flow_imp.dz('20261020135455Z')
+,p_updated_on=>wwv_flow_imp.dz('20261031005802Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -7253,8 +7319,9 @@ wwv_flow_imp_page.create_page_process(
 '  v_esperado NUMBER := 0;',
 '  v_diferencia NUMBER := 0;',
 '  v_contado NUMBER := 0;',
+'  v_mensaje_base VARCHAR2(4000);',
 'BEGIN',
-'  -- Validar que se haya ingresado el efectivo contado (AHORA CON ERROR EN ROJO)',
+'  -- 1. Validar que se haya ingresado el efectivo contado',
 '  IF :P10_EFECTIVO_CONTADO IS NULL THEN',
 '    apex_error.add_error(',
 unistr('        p_message => ''\26A0\FE0F Ingres\00E1 el efectivo contado antes de cerrar la caja.'','),
@@ -7266,13 +7333,13 @@ unistr('        p_message => ''\26A0\FE0F Ingres\00E1 el efectivo contado antes 
 '',
 '  v_contado := :P10_EFECTIVO_CONTADO;',
 '',
-'  -- Obtener el cierre abierto',
+'  -- 2. Obtener el cierre abierto',
 '  SELECT cierre_id, monto_inicial',
 '    INTO v_cierre_id, v_monto_inicial',
 '    FROM cierres_caja',
 '   WHERE estado = ''ABIERTO'';',
 '  ',
-'  -- Calcular ventas del turno (desde la apertura)',
+'  -- 3. Calcular ventas del turno (desde la apertura)',
 '  SELECT ',
 '    NVL(SUM(CASE WHEN metodo_pago = ''EFECTIVO'' THEN total_venta ELSE 0 END), 0),',
 '    NVL(SUM(CASE WHEN metodo_pago IN (''DEBITO'',''CREDITO'') THEN total_venta ELSE 0 END), 0),',
@@ -7281,18 +7348,18 @@ unistr('        p_message => ''\26A0\FE0F Ingres\00E1 el efectivo contado antes 
 '  FROM ventas_cabecera v',
 '  WHERE v.fecha >= (SELECT fecha_apertura FROM cierres_caja WHERE cierre_id = v_cierre_id);',
 '  ',
-'  -- Obtener retiros y gastos',
+'  -- 4. Obtener retiros y gastos',
 '  SELECT NVL(SUM(CASE WHEN tipo = ''RETIRO'' THEN monto ELSE 0 END), 0),',
 '         NVL(SUM(CASE WHEN tipo = ''GASTO'' THEN monto ELSE 0 END), 0)',
 '    INTO v_retiros, v_gastos',
 '    FROM movimientos_caja',
 '   WHERE cierre_id = v_cierre_id;',
 '  ',
-'  -- Calcular esperado y diferencia',
+'  -- 5. Calcular esperado y diferencia',
 '  v_esperado := v_monto_inicial + v_ventas_efectivo - v_retiros - v_gastos;',
 '  v_diferencia := v_contado - v_esperado;',
 '  ',
-'  -- Actualizar cierre',
+'  -- 6. ACTUALIZAR CAJA (Se ejecuta siempre para cerrarla)',
 '  UPDATE cierres_caja',
 '     SET fecha_cierre = SYSDATE,',
 '         ventas_efectivo = v_ventas_efectivo,',
@@ -7307,19 +7374,43 @@ unistr('        p_message => ''\26A0\FE0F Ingres\00E1 el efectivo contado antes 
 '         observaciones = :P10_OBSERVACIONES',
 '   WHERE cierre_id = v_cierre_id;',
 '  ',
-'  -- Armar el mensaje ANTES de limpiar',
-'  APEX_APPLICATION.G_PRINT_SUCCESS_MESSAGE := ',
-unistr('    ''\2705 Caja cerrada. Esperado: $'' || TO_CHAR(v_esperado, ''FM999G999G999D00'') || '),
-'    '' - Contado: $'' || TO_CHAR(v_contado, ''FM999G999G999D00'') ||',
-'    '' - Diferencia: $'' || TO_CHAR(v_diferencia, ''FM999G999G9990D00'');',
-'  ',
-unistr('  -- Limpiar campos DESPU\00C9S del mensaje'),
+'  -- 7. Limpiar campos del formulario',
 '  :P10_EFECTIVO_CONTADO := NULL;',
 '  :P10_OBSERVACIONES := NULL;',
+'',
+'  -- 8. Armar el mensaje base (sin diferencia)',
+'  v_mensaje_base := ''Esperado: $'' || TO_CHAR(v_esperado, ''FM999G999G999D00'') || ',
+'                    '' - Contado: $'' || TO_CHAR(v_contado, ''FM999G999G999D00'');',
+'',
+unistr('  -- 9. L\00F3gica de mensajes seg\00FAn el signo de la diferencia'),
+'  IF v_diferencia < 0 THEN',
+'      -- FALTANTE (Menor a 0): Cartel Amarillo',
+'      apex_util.set_session_state(''P10_MENSAJE_CIERRE'', ''Caja cerrada con FALTANTE. '' || v_mensaje_base || ',
+'                             '' - Faltante: $'' || TO_CHAR(ABS(v_diferencia), ''FM999G999G999D00''));',
+'      ',
+'      -- Anulamos el verde para que no salgan los dos juntos',
+'      APEX_APPLICATION.G_PRINT_SUCCESS_MESSAGE := NULL; ',
+'      ',
+'  ELSIF v_diferencia > 0 THEN',
+'      -- SOBRANTE (Mayor a 0): Cartel Verde',
+unistr('      APEX_APPLICATION.G_PRINT_SUCCESS_MESSAGE := ''\2705 Caja cerrada con SOBRANTE. '' || v_mensaje_base || '),
+'                                                   '' - Sobrante: $'' || TO_CHAR(v_diferencia, ''FM999G999G999D00'');',
+'      ',
+unistr('      -- Limpiamos el \00EDtem oculto por si acaso'),
+'      apex_util.set_session_state(''P10_MENSAJE_CIERRE'', NULL);',
+'      ',
+'  ELSE',
+'      -- PERFECTO (Igual a 0): Cartel Verde',
+unistr('      APEX_APPLICATION.G_PRINT_SUCCESS_MESSAGE := ''\2705 Caja cerrada perfectamente. '' || v_mensaje_base || '' - Diferencia: $0.00'';'),
+'      ',
+unistr('      -- Limpiamos el \00EDtem oculto'),
+'      apex_util.set_session_state(''P10_MENSAJE_CIERRE'', NULL);',
+'  END IF;',
+'',
 'EXCEPTION',
 '  WHEN NO_DATA_FOUND THEN',
 '    apex_error.add_error(',
-unistr('        p_message => ''\26A0\FE0F No hay caja abierta.'','),
+unistr('        p_message => ''\26A0\FE0F No hay ninguna caja abierta para cerrar.'','),
 '        p_display_location => apex_error.c_inline_in_notification',
 '    );',
 '  WHEN OTHERS THEN',
@@ -7334,7 +7425,7 @@ unistr('        p_message => ''\274C Error: '' || SQLERRM,'),
 ,p_process_when_type=>'REQUEST_EQUALS_CONDITION'
 ,p_internal_uid=>42625265713022567521
 ,p_created_on=>wwv_flow_imp.dz('20260929191301Z')
-,p_updated_on=>wwv_flow_imp.dz('20261020135456Z')
+,p_updated_on=>wwv_flow_imp.dz('20261031011005Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -7350,10 +7441,11 @@ wwv_flow_imp_page.create_page(
 ,p_autocomplete_on_off=>'OFF'
 ,p_step_template=>4075783602716660119
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'11'
 ,p_created_on=>wwv_flow_imp.dz('20261005181906Z')
-,p_last_updated_on=>wwv_flow_imp.dz('20261022022707Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20261030202206Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_last_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
@@ -10487,10 +10579,11 @@ unistr('/* Usamos el ID din\00E1mico para empujar la columna derecha */'),
 '}'))
 ,p_step_template=>4075783602716660119
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'16'
 ,p_created_on=>wwv_flow_imp.dz('20261015203114Z')
-,p_last_updated_on=>wwv_flow_imp.dz('20261018010319Z')
+,p_last_updated_on=>wwv_flow_imp.dz('20261030202223Z')
 ,p_created_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 ,p_last_updated_by=>'DESDEABAJOOTRAVEZ2@GMAIL.COM'
 );
