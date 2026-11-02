@@ -27,6 +27,13 @@ Sistema de Punto de Venta (POS) y Gestión de Inventario completo para un kiosco
 *   **Frontend:** JavaScript, HTML5, CSS3 (Personalización de interfaces y responsividad).
 *   **Otros:** JSON, Progressive Web Apps (PWA).
 
+## 🛡️ Calidad de Software (QA) y Buenas Prácticas
+*   **Auditoría Estática:** Uso de APEX Advisor para validación de seguridad, rendimiento y accesibilidad.
+*   **Seguridad:** Implementación de esquemas de autorización en todas las páginas para prevenir accesos no autorizados por URL.
+*   **Optimización de Base de Datos:** Resolución de conflictos de conversión de tipos de datos en Triggers de Oracle (ORA-06502).
+*   **UX/UI:** Manejo diferenciado de notificaciones (carteles verdes para éxito, amarillos/rojos para advertencias de negocio como faltantes de caja).
+*   **Integridad de Datos:** Validaciones lógicas en PL/SQL para evitar registros huérfanos o vacíos.
+
 ## 📸 Capturas del Sistema
 
 ### Panel de Control
