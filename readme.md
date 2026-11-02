@@ -53,3 +53,6 @@ Sistema de Punto de Venta (POS) y Gestión de Inventario completo para un kiosco
 
 ### Reportes y KPIs
 ![Reportes](https://github.com/Joaco1404/Kiosco-Oracle-APEX/blob/main/imagenes/reportes.png?raw=true)
+
+## 🛡️ Documentación de QA
+*   [Ver Registro de Auditoría y Bugs Documentados](QA_AUDIT_LOG.md)
